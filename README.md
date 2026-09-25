@@ -46,3 +46,6 @@ Real infinite pan/zoom (tldraw), regions/groups, opener links, ghost cards + ses
 
 ## Status
 Personal experiment. Firefox only (relies on `tabs.captureTab` of background tabs). MV2.
+
+## License
+MIT — see [LICENSE](LICENSE).
