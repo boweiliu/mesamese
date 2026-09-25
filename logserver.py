@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Tiny log sink for the Mesa spike. The extension POSTs log entries here; we
+# Tiny log sink for the Mesamese spike. The extension POSTs log entries here; we
 # append them (dedup by seq) to live.log in this folder so the assistant can read it.
 import http.server, json, os, sys, threading
 
@@ -57,5 +57,5 @@ if __name__ == '__main__':
     # fresh log each run
     open(LOGFILE, 'w').close()
     httpd = TS(('127.0.0.1', PORT), H)
-    print(f'[mesa-log] listening on http://127.0.0.1:{PORT} -> {LOGFILE}', flush=True)
+    print(f'[mesamese-log] listening on http://127.0.0.1:{PORT} -> {LOGFILE}', flush=True)
     httpd.serve_forever()

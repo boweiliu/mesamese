@@ -1,4 +1,4 @@
-# Mesa — Implementation Plan
+# Mesamese — Implementation Plan
 
 ## Stack
 - **WXT** — Vite, TS, manifest-gen, HMR. Firefox **MV2** (more powerful; personal use).
@@ -7,7 +7,7 @@
 
 ## Project structure (WXT)
 ```
-mesa/
+mesamese/
   entrypoints/
     background.ts          // tab tracking, thumbnails, window mgmt, storage, messaging
     canvas/

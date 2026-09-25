@@ -6,7 +6,7 @@ const RUN = Math.random().toString(36).slice(2, 10);
 
 function log(level, msg, extra) {
   const e = { t: new Date().toISOString(), id: RUN + '-' + SEQ, seq: SEQ++, level, msg, ...(extra || {}), source: 'bg' };
-  (level === 'error' ? console.error : level === 'warn' ? console.warn : console.log)('[mesa:bg]', msg, extra || {});
+  (level === 'error' ? console.error : level === 'warn' ? console.warn : console.log)('[mesamese:bg]', msg, extra || {});
   fetch(SERVER, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ entries: [e] }) }).catch(() => {});
 }
 

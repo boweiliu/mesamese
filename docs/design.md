@@ -1,4 +1,4 @@
-# Mesa — Design Doc (working name)
+# Mesamese — Design Doc (working name)
 
 ## One line
 A Firefox extension that turns your tabs into an infinite, zoomable canvas of snapshot cards. Click a card and it pops live at ~90% over the blurred canvas; exit and you're back on the map.
@@ -6,7 +6,7 @@ A Firefox extension that turns your tabs into an infinite, zoomable canvas of sn
 ## Why
 Tabs live in a 1D strip across the top. After twenty of them you can't read titles, can't find the one you wanted, can't see the shape of what you're doing. You open a window for "research," another for "the project," another for "that thing later" — and still lose things. You have spatial memory. The tab strip doesn't use it.
 
-Mesa gives the sprawl a place: a 2D canvas you pan and zoom, like Figma or a whiteboard. You arrange tabs the way you think about them. Zoom out = the shape of your session. Zoom in = the work. The blurred-focus mode keeps the map present while you're in one tab, so context never disappears.
+Mesamese gives the sprawl a place: a 2D canvas you pan and zoom, like Figma or a whiteboard. You arrange tabs the way you think about them. Zoom out = the shape of your session. Zoom in = the work. The blurred-focus mode keeps the map present while you're in one tab, so context never disappears.
 
 ## The model
 Three things:

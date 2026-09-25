@@ -1,4 +1,4 @@
-// Mesa spike v7 — map with persisted thumbs/layout (URL-keyed) + manual capture +
+// Mesamese spike v7 — map with persisted thumbs/layout (URL-keyed) + manual capture +
 // logs auto-flushed to a local server (http://127.0.0.1:8787) so the assistant can read them.
 const board = document.getElementById('board');
 const statusEl = document.getElementById('status');
@@ -17,7 +17,7 @@ let LOG_SEQ = 0, lastSent = 0, serverUp = true, flushTimer = null;
 function log(level, msg, extra) {
   const e = { t: new Date().toISOString(), id: RUN + '-' + LOG_SEQ, seq: LOG_SEQ++, level, msg, ...(extra || {}), source: 'canvas' };
   LOG.push(e);
-  (level === 'error' ? console.error : level === 'warn' ? console.warn : console.log)('[mesa]', msg, extra || {});
+  (level === 'error' ? console.error : level === 'warn' ? console.warn : console.log)('[mesamese]', msg, extra || {});
   scheduleFlush();
   return e;
 }
@@ -30,7 +30,7 @@ async function flush() {
     const r = await fetch(SERVER, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ entries }) });
     if (r.ok) { lastSent = LOG.length; serverUp = true; }
   } catch (e) {
-    if (serverUp) { console.warn('[mesa] log server down — run logserver.py', e.message); serverUp = false; }
+    if (serverUp) { console.warn('[mesamese] log server down — run logserver.py', e.message); serverUp = false; }
   }
 }
 function setStatus(s) { statusEl.textContent = s; }
@@ -138,9 +138,9 @@ document.getElementById('dl').addEventListener('click', () => {
   const payload = { generatedAt: new Date().toISOString(), originWin, state: { thumbs: Object.keys(thumbs).length, layoutEntries: Object.keys(layout).length }, log: LOG };
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }));
-  a.download = 'mesa-log.json'; a.click();
+  a.download = 'mesamese-log.json'; a.click();
   log('info', 'logs downloaded', { entries: LOG.length });
-  setStatus('logs downloaded to ~/Downloads/mesa-log.json');
+  setStatus('logs downloaded to ~/Downloads/mesamese-log.json');
 });
 
 // ---- drag ----
