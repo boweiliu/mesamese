@@ -3,3 +3,7 @@ server.out
 .DS_Store
 node_modules/
 dist/
+
+# build artifacts
+*.xpi
+web-ext-artifacts/
