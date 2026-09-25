@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "Mesa Spike",
+  "version": "0.0.2",
+  "description": "Tabs-as-canvas spike: focus a tab at 90% over a blurred map, in-window",
+  "browser_specific_settings": { "gecko": { "id": "mesa-spike@local" } },
+  "permissions": ["tabs", "activeTab", "storage", "unlimitedStorage", "<all_urls>", "http://127.0.0.1/*", "http://localhost/*"],
+  "background": { "scripts": ["bg.js"] },
+  "browser_action": { "default_title": "Mesa" },
+  "chrome_url_overrides": { "newtab": "canvas.html" },
+  "web_accessible_resources": ["canvas.html", "focus.js"]
+}
