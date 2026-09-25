@@ -134,6 +134,26 @@ browser.tabs.onRemoved.addListener((tabId) => { const el = cards.get(tabId); if 
 
 // ---- buttons ----
 document.getElementById('cap').addEventListener('click', captureAll);
+document.getElementById('exp').addEventListener('click', () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify({ layout }, null, 2)], { type: 'application/json' }));
+  a.download = 'mesamese-layout.json'; a.click();
+  log('info', 'layout exported', { entries: Object.keys(layout).length });
+  setStatus(`exported ${Object.keys(layout).length} positions to ~/Downloads/mesamese-layout.json`);
+});
+document.getElementById('impBtn').addEventListener('click', () => document.getElementById('imp').click());
+document.getElementById('imp').addEventListener('change', async (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  try {
+    const data = JSON.parse(await f.text());
+    if (data.layout) {
+      Object.assign(layout, data.layout); await putLayout();
+      for (const [, el] of cards) { const p = layout[el.dataset.url]; if (p) { el.style.left = p.x + 'px'; el.style.top = p.y + 'px'; } }
+      log('info', 'layout imported', { entries: Object.keys(layout).length });
+      setStatus(`imported ${Object.keys(data.layout).length} positions`);
+    }
+  } catch (e2) { log('error', 'import failed', { error: e2.message }); }
+});
 document.getElementById('dl').addEventListener('click', () => {
   const payload = { generatedAt: new Date().toISOString(), originWin, state: { thumbs: Object.keys(thumbs).length, layoutEntries: Object.keys(layout).length }, log: LOG };
   const a = document.createElement('a');
